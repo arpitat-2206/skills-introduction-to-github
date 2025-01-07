@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Count Substring Occurrences</title>
+    <script>
+        function countSubstringOccurrences(mainString, subString) {
+            if (subString.length === 0) return 0;
+            let count = 0;
+            let position = mainString.indexOf(subString);
+            while (position !== -1) {
+                count++;
+                position = mainString.indexOf(subString, position + 1);
+            }
+            return count;
+        }
+
+        function displayCount() {
+            const mainString = document.getElementById('mainString').value;
+            const subString = document.getElementById('subString').value;
+            const result = countSubstringOccurrences(mainString, subString);
+            document.getElementById('result').innerText = `Occurrences: ${result}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Count Substring Occurrences</h1>
+    <div>
+        <label for="mainString">Main String:</label>
+        <input type="text" id="mainString">
+    </div>
+    <div>
+        <label for="subString">Substring:</label>
+        <input type="text" id="subString">
+    </div>
+    <button onclick="displayCount()">Count</button>
+    <p id="result"></p>
+</body>
+</html>
